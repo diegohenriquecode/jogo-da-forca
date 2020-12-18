@@ -25,6 +25,7 @@
 
 
   </div>
+  <p> Mudança aconteceu aqui! </p>
 </template>
 
 <script>
