@@ -2,13 +2,13 @@
   <div class="jogo">
     <Forca :erros="erros" />
 
-    <Palavra 
+    <Palavra
       :palavra="palavra"
       :dica="dica"
       :verificarLetra="verificarLetra"
       :etapa="etapa"
     />
-
+    <!-- Etapa será passada para Palavra -->
     <Teclado
       v-if="etapa === 'jogo'"
       :letras="letras"
@@ -16,14 +16,12 @@
       :jogar="jogar"
     />
 
-    <Final 
+    <Final
       v-if="etapa != 'jogo'"
       :etapa="etapa"
-      :texto="etapa === 'ganhador' ? 'Parabéns' : 'Loooooser'"
+      :texto="etapa === 'ganhador' ? 'Parabéns' : 'Não foi dessa vez :('"
       :jogarNovamente="jogarNovamente"
     />
-
-
   </div>
 </template>
 
@@ -43,7 +41,7 @@ export default {
     etapa: String,
     letras: Array,
     jogar: Function,
-    jogarNovamente: Function
+    jogarNovamente: Function,
   },
   data() {
     return {};
@@ -53,7 +51,7 @@ export default {
     Forca,
     Palavra,
     Teclado,
-    Final
+    Final,
   },
 };
 </script>

@@ -1,7 +1,8 @@
 <template>
   <div class="final">
+    <!-- A classe vai ser reativa (ou seja, vai mudar dinamicamente) -->
     <div :class="`final-texto  ${etapa}`">
-      {{texto}}
+      {{ texto }}
     </div>
     <button class="final-botao" v-on:click="jogarNovamente">
       Jogar Novamente
@@ -11,13 +12,13 @@
 
 <script>
 export default {
-  name: 'Final',
+  name: "Final",
   props: {
     etapa: String,
     texto: String,
-    jogarNovamente: Function
+    jogarNovamente: Function,
   },
-}
+};
 </script>
 
 <style>

@@ -3,13 +3,14 @@
     <h1>Jogo da Forca</h1>
 
     <section v-if="tela === 'inicio'" id="inicio">
+      <!-- Fórmulário será dinâmico -->
       <Formulario
         v-if="etapa === 'palavra'"
         title="Defina a Palavra"
         button="Próximo"
         :action="setPalavra"
       />
-
+      <!-- Aqui será a condicional para definição da dica -->
       <Formulario
         v-if="etapa === 'dica'"
         title="Defina a dica"
@@ -43,6 +44,7 @@ export default {
   data() {
     return {
       tela: "inicio",
+      //Etapa será passado para Jogo que passará para Palavra que passará para Final 
       etapa: "palavra",
       palavra: "",
       dica: "",
@@ -64,12 +66,12 @@ export default {
       this.etapa = "jogo";
       this.tela = "jogo";
     },
-    verificarLetra: function(letra) {
+    verificarLetra: function (letra) {
       return this.letras.find(
-        item => item.toLowerCase() === letra.toLowerCase()
+        (item) => item.toLowerCase() === letra.toLowerCase()
       );
     },
-    jogar: function(letra) {
+    jogar: function (letra) {
       //adiciona letra jogada
       this.letras.push(letra);
 
@@ -77,32 +79,32 @@ export default {
       this.verificarErros(letra);
     },
 
-    verificarErros: function(letra) {
+    verificarErros: function (letra) {
       //acerto
-      if(this.palavra.toLowerCase().indexOf(letra.toLowerCase()) >= 0) {
+      if (this.palavra.toLowerCase().indexOf(letra.toLowerCase()) >= 0) {
         return this.verificarAcertos();
       }
       //erros
       this.erros++;
       //enforcado
-      if(this.erros == 6) {
-        this.etapa = 'enforcado';
+      if (this.erros == 6) {
+        this.etapa = "enforcado";
       }
     },
-    verificarAcertos: function() {
-      let letrasUnicas = [...new Set(this.palavra.split(''))];
-      if(letrasUnicas.length === (this.letras.length - this.erros)) {
-        this.etapa = 'ganhador';
+    verificarAcertos: function () {
+      let letrasUnicas = [...new Set(this.palavra.split(""))];
+      if (letrasUnicas.length === this.letras.length - this.erros) {
+        this.etapa = "ganhador";
       }
     },
-    jogarNovamente: function() {
-      this.palavra = '';
-      this.dica = '';
+    jogarNovamente: function () {
+      this.palavra = "";
+      this.dica = "";
       this.erros = 0;
       this.letras = [];
-      this.tela = 'inicio';
-      this.etapa = 'palavra';
-    }
+      this.tela = "inicio";
+      this.etapa = "palavra";
+    },
   },
 };
 </script>

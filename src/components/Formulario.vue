@@ -2,11 +2,14 @@
   <div class="formulario">
     <div class="formulario-title">{{ title }}</div>
 
-    <input type="text" class="formulario-input" v-model="inputValue" />
+    <input
+      type="text"
+      class="formulario-input"
+      v-model="inputValue"
+      @keydown.enter="onSubmit"
+    />
 
-    <button 
-      :disabled="inputValue.length === 0"
-      v-on:click="onSubmit">
+    <button :disabled="inputValue.length === 0" v-on:click="onSubmit">
       {{ button }}
     </button>
   </div>
@@ -22,7 +25,7 @@ export default {
   },
   data() {
     return {
-      inputValue:''
+      inputValue: "",
     };
   },
   methods: {

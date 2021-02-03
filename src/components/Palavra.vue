@@ -19,6 +19,7 @@ export default {
     palavra: String,
     dica: String,
     verificarLetra: Function,
+    // Etapa será passado para final
     etapa: String
   },
   data() {

@@ -1,12 +1,14 @@
 <template>
   <div class="teclado">
-    <button class="teclado-botao" 
-     v-for="(letra, key) in 'abcdefghijklmnopqrstuvwxyz'"
-     :key="key"
-     :disabled="verificarLetra(letra)"
-     v-on:click="jogar(letra)" 
+    <button
+      class="teclado-botao"
+      v-for="(letra,
+      key) in 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%¨&*()_-.,'"
+      :key="key"
+      :disabled="verificarLetra(letra)"
+      v-on:click="jogar(letra)"
     >
-      {{letra}}
+      {{ letra }}
     </button>
   </div>
 </template>
@@ -17,7 +19,7 @@ export default {
   props: {
     letras: String,
     verificarLetra: Function,
-    jogar: Function
+    jogar: Function,
   },
   data() {
     return {};
@@ -37,8 +39,7 @@ export default {
 }
 
 .teclado-botao {
-    margin: 5px;
-    text-transform: uppercase;
+  margin: 5px;
+  text-transform: uppercase;
 }
-
 </style>
